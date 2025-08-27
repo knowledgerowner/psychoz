@@ -35,29 +35,53 @@ export default async function CategoriesPage() {
 
   const getCategoryIcon = (name: string) => {
     const iconClass = "w-8 h-8";
-    const nameLower = name.toLowerCase();
     
-    if (nameLower.includes('web') || nameLower.includes('frontend') || nameLower.includes('react')) {
-      return <div className={`${iconClass} bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold`}>W</div>;
-    }
-    if (nameLower.includes('sécurité') || nameLower.includes('security') || nameLower.includes('cyber')) {
-      return <div className={`${iconClass} bg-red-500 rounded-lg flex items-center justify-center text-white font-bold`}>S</div>;
-    }
-    if (nameLower.includes('ai') || nameLower.includes('intelligence') || nameLower.includes('machine')) {
-      return <div className={`${iconClass} bg-purple-500 rounded-lg flex items-center justify-center text-white font-bold`}>AI</div>;
-    }
-    if (nameLower.includes('devops') || nameLower.includes('cloud') || nameLower.includes('aws')) {
-      return <div className={`${iconClass} bg-orange-500 rounded-lg flex items-center justify-center text-white font-bold`}>C</div>;
-    }
-    if (nameLower.includes('backend') || nameLower.includes('server') || nameLower.includes('api')) {
-      return <div className={`${iconClass} bg-green-500 rounded-lg flex items-center justify-center text-white font-bold`}>B</div>;
-    }
-    return <div className={`${iconClass} bg-gray-500 rounded-lg flex items-center justify-center text-white font-bold`}>{name.charAt(0)}</div>;
+    // Générer des couleurs et lettres basées sur le nom de la catégorie
+    const generateIconData = (categoryName: string) => {
+      // Extraire les premières lettres de chaque mot
+      const words = categoryName.split(' ').filter(word => word.length > 0);
+      let letters = '';
+      
+      if (words.length >= 2) {
+        // Prendre les 2 premières lettres des 2 premiers mots
+        letters = words.slice(0, 2).map(word => word.charAt(0).toUpperCase()).join('');
+      } else if (words.length === 1) {
+        // Si un seul mot, prendre les 2 premières lettres
+        letters = categoryName.slice(0, 2).toUpperCase();
+      } else {
+        letters = categoryName.slice(0, 2).toUpperCase();
+      }
+      
+      // Générer une couleur basée sur le hash du nom
+      const hash = categoryName.split('').reduce((a, b) => {
+        a = ((a << 5) - a) + b.charCodeAt(0);
+        return a & a;
+      }, 0);
+      
+      const colors = [
+        'bg-blue-500', 'bg-green-500', 'bg-purple-500', 'bg-orange-500',
+        'bg-red-500', 'bg-indigo-500', 'bg-pink-500', 'bg-teal-500',
+        'bg-cyan-500', 'bg-amber-500', 'bg-emerald-500', 'bg-violet-500'
+      ];
+      
+      const colorIndex = Math.abs(hash) % colors.length;
+      const bgColor = colors[colorIndex];
+      
+      return { letters, bgColor };
+    };
+    
+    const { letters, bgColor } = generateIconData(name);
+    
+    return (
+      <div className={`${iconClass} ${bgColor} rounded-lg flex items-center justify-center text-white font-bold text-sm`}>
+        {letters}
+      </div>
+    );
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
@@ -127,7 +151,7 @@ export default async function CategoriesPage() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between mb-2">
-                            <h3 className="font-semibold text-lg group-hover:text-primary transition-colors truncate">
+                            <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
                               {category.name}
                             </h3>
                             <Badge variant="outline" className="ml-2 flex-shrink-0">
