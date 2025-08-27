@@ -113,7 +113,7 @@ export default function RootLayout({
                     {
                       "@type": "Offer",
                       "itemOffered": {
-                        "@type": "Articles",
+                        "@type": "Service",
                         "name": "Articles",
                         "description": "Trouvez les réponses à vos questions sur Psychoz",
                         "url": "https://www.psychoz.fr/articles",
@@ -123,17 +123,17 @@ export default function RootLayout({
                     {
                       "@type": "Offer",
                       "itemOffered": {
-                        "@type": "A propos",
-                        "name": "A propos",
+                        "@type": "Service",
+                        "name": "À propos",
                         "description": "Découvrez Psychoz, notre mission et notre équipe",
                         "url": "https://www.psychoz.fr/about",
-                        "category": "A propos"
+                        "category": "À propos"
                       }
                     },
                     {
                       "@type": "Offer",
                       "itemOffered": {
-                        "@type": "Contact",
+                        "@type": "Service",
                         "name": "Contact",
                         "description": "Contactez-nous pour toute question ou demande de service",
                         "url": "https://www.psychoz.fr/contact",
@@ -143,7 +143,7 @@ export default function RootLayout({
                     {
                       "@type": "Offer",
                       "itemOffered": {
-                        "@type": "Partenaires",
+                        "@type": "Service",
                         "name": "Partenaires",
                         "description": "Découvrez nos partenaires et collaborateurs",
                         "url": "https://www.psychoz.fr/partners",

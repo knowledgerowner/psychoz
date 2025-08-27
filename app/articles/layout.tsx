@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     images: ["/Logo.png"],
   },
   alternates: {
-    canonical: "https://www.psychoz.fr",
+    canonical: "https://www.psychoz.fr/articles",
   },
 };
 

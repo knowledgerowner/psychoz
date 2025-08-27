@@ -10,6 +10,7 @@ import {
   TrendingUp,
   Tag,
 } from "lucide-react";
+import AdminRevalidationButton from "@/components/admin-revalidation-button";
 
 interface Stats {
   articles: number;
@@ -90,6 +91,11 @@ export default function DashboardPage() {
           <div className="mt-2 text-2xl font-bold">{stats.blockedIPs}</div>
           <div className="text-xs text-muted-foreground">IPs bloquées</div>
         </div>
+      </div>
+
+      {/* Revalidation des pages */}
+      <div className="mb-8">
+        <AdminRevalidationButton />
       </div>
 
       {/* Quick Actions */}

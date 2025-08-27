@@ -122,12 +122,12 @@ export function markdownToHtmlSync(markdown: string): string {
     .replace(/^:>\s+(.*$)/gim, '<div class="success-block"><strong>✅ Succès:</strong> $1</div>')
     
     // Titres (du plus spécifique au plus général)
-    .replace(/^###### (.*$)/gim, '<h6>$1</h6>')
-    .replace(/^##### (.*$)/gim, '<h5>$1</h5>')
-    .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
-    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+    .replace(/^###### (.*$)/gim, '<strong>$1</strong>')
+    .replace(/^##### (.*$)/gim, '<h6>$1</h6>')
+    .replace(/^#### (.*$)/gim, '<h5>$1</h5>')
+    .replace(/^### (.*$)/gim, '<h4>$1</h4>')
+    .replace(/^## (.*$)/gim, '<h3>$1</h3>')
+    .replace(/^# (.*$)/gim, '<h2>$1</h2>')
     
     // Gras et italique
     .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')

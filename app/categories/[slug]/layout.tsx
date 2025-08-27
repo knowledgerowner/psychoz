@@ -44,6 +44,9 @@ export async function generateMetadata({ params }: CategoryLayoutProps): Promise
         description: category.seoDesc || category.description || `Découvrez tous nos articles sur ${category.name}`,
         images: category.seoImg ? [category.seoImg] : undefined,
       },
+      alternates: {
+        canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/categories/${category.slug}`,
+      },
     };
   } catch (error) {
     console.error('Erreur lors de la génération des métadonnées de catégorie:', error);
