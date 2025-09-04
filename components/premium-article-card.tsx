@@ -100,13 +100,13 @@ export default function PremiumArticleCard({ article, hasPurchased = false }: Pr
   };
 
   return (
-    <HolographicCard className="h-[500px] w-full">
+    <HolographicCard className="h-full min-h-[400px] w-full">
       <div 
         className="relative h-full w-full flex flex-col cursor-pointer"
         onClick={showAsFree ? handleViewArticle : handlePurchase}
       >
         {/* Image avec overlay premium */}
-        <div className="relative h-64 overflow-hidden bg-gradient-to-br from-sky-800 via-sky-700 to-sky-900">
+        <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-sky-800 via-sky-700 to-sky-900">
           {article.imageUrl ? (
             <div className="relative w-full h-full">
               <Image 
@@ -159,16 +159,11 @@ export default function PremiumArticleCard({ article, hasPurchased = false }: Pr
         </div>
 
         {/* Contenu de la carte */}
-        <div className="p-6 flex flex-col flex-1 bg-gradient-to-b from-sky-800/90 to-sky-900">
+        <div className="p-4 sm:p-6 flex flex-col flex-1 bg-gradient-to-b from-sky-800/90 to-sky-900">
           {/* Titre avec limitation de lignes */}
-          <h3 className="text-xl font-bold text-white mb-3 line-clamp-2 group-hover:text-sky-200 transition-colors duration-300">
+          <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 group-hover:text-sky-200 transition-colors duration-300 flex-1 line-clamp-3 sm:line-clamp-2">
             {article.title}
           </h3>
-          
-          {/* Extrait avec limitation et gestion de la hauteur */}
-          <p className="text-sky-200 text-sm leading-relaxed mb-6 line-clamp-3 flex-1">
-            {article.excerpt || "Découvrez ce contenu premium exclusif avec des analyses approfondies et des techniques avancées."}
-          </p>
 
           {/* Prix et statut */}
           <div className="mt-auto">

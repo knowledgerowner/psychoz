@@ -12,6 +12,7 @@ export default function RegisterPage() {
     email: "",
     password: "",
     confirmPassword: "",
+    acceptNotifications: false,
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -38,13 +39,17 @@ export default function RegisterPage() {
           username: formData.username,
           email: formData.email,
           password: formData.password,
+          acceptNotifications: formData.acceptNotifications,
         }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        router.push("/login?message=Compte créé avec succès");
+        const successMessage = formData.acceptNotifications 
+          ? "Compte créé avec succès ! Vous recevrez des notifications par email." 
+          : "Compte créé avec succès !";
+        router.push(`/login?message=${encodeURIComponent(successMessage)}`);
       } else {
         setError(data.error || "Erreur lors de l'inscription");
       }
@@ -128,6 +133,26 @@ export default function RegisterPage() {
               />
             </div>
 
+            <div className="flex items-start space-x-3 p-4 bg-sky-50 dark:bg-sky-950/20 rounded-lg border border-sky-200 dark:border-sky-800">
+              <input
+                id="acceptNotifications"
+                type="checkbox"
+                checked={formData.acceptNotifications}
+                onChange={(e) => setFormData({ ...formData, acceptNotifications: e.target.checked })}
+                className="mt-1 h-4 w-4 text-sky-600 border-sky-300 rounded focus:ring-sky-500"
+              />
+              <div className="flex-1">
+                <label htmlFor="acceptNotifications" className="block text-sm font-medium text-foreground cursor-pointer">
+                  Notifications par email
+                </label>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Je souhaite recevoir des notifications par email de Psychoz pour être informé(e) des nouveaux articles, 
+                  des réponses à mes commentaires et des actualités du site. Vous pourrez modifier ces préférences à tout moment 
+                  dans votre profil.
+                </p>
+              </div>
+            </div>
+
             {error && (
               <div className="text-red-500 text-sm bg-red-50 dark:bg-red-950/20 p-3 rounded-md">
                 {error}
@@ -136,7 +161,7 @@ export default function RegisterPage() {
 
             <Button
               type="submit"
-              className="w-full"
+              className="w-full bg-sky-400 hover:bg-sky-700"
               disabled={isLoading}
             >
               {isLoading ? "Création..." : "Créer le compte"}

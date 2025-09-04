@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
@@ -15,64 +14,6 @@ interface CategoryPageProps {
   searchParams: Promise<{ page?: string }>;
 }
 
-// Fonction pour générer les métadonnées dynamiques
-export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-  try {
-    const { slug } = await params;
-    const category = await prisma.category.findUnique({
-      where: { slug },
-      select: {
-        id: true,
-        name: true,
-        slug: true,
-        description: true,
-        seoTitle: true,
-        seoDesc: true,
-        seoKeywords: true,
-        seoImg: true,
-      },
-    });
-
-    if (!category) {
-      return {
-        title: 'Catégorie non trouvée',
-        description: 'La catégorie que vous recherchez n\'existe pas.',
-      };
-    }
-
-    return {
-      title: category.seoTitle || `${category.name} - Articles`,
-      description: category.seoDesc || category.description || `Découvrez tous nos articles sur ${category.name}`,
-      keywords: category.seoKeywords,
-      openGraph: {
-        title: category.seoTitle || `${category.name} - Articles`,
-        description: category.seoDesc || category.description || `Découvrez tous nos articles sur ${category.name}`,
-        type: 'website',
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/categories/${category.slug}`,
-        images: category.seoImg ? [
-          {
-            url: category.seoImg,
-            width: 1200,
-            height: 630,
-            alt: category.seoTitle || category.name,
-          },
-        ] : undefined,
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: category.seoTitle || `${category.name} - Articles`,
-        description: category.seoDesc || category.description || `Découvrez tous nos articles sur ${category.name}`,
-        images: category.seoImg ? [category.seoImg] : undefined,
-      },
-    };
-  } catch (error) {
-    console.error('Erreur lors de la génération des métadonnées:', error);
-    return {
-      title: 'Erreur',
-      description: 'Une erreur est survenue lors du chargement de la catégorie.',
-    };
-  }
-}
 
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
   try {
@@ -267,7 +208,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               </p>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 grid-cols-2 lg:grid-cols-4">
               {relatedCategoriesWithCount.map((cat) => (
                 <Link key={cat.id} href={`/categories/${cat.slug}`}>
                   <Card className="h-full transition-all duration-200 hover:shadow-lg hover:-translate-y-1 group">

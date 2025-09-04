@@ -32,23 +32,22 @@ export default function HomeArticlesWrapper({ articles, title, description, maxI
   const displayArticles = maxItems ? articles.slice(0, maxItems) : articles;
 
   return (
-    <section className="mt-16 w-full max-w-80/100 mx-auto">
-      <div className="text-center mb-8">
+    <section className="mt-16 w-full w-full md:max-w-80/100 mx-auto">
+      <div className="text-center mb-8 h-fit">
         <h2 className="text-2xl font-semibold tracking-tight mb-4 text-black">
           {title}
         </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-muted-foreground max-w-2xl mx-auto truncate line-clamp-1">
           {description}
         </p>
       </div>
       
       {displayArticles.length > 0 ? (
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
           {displayArticles.map((article) => (
-            <div key={article.id}>
+            <div key={article.id} className="flex flex-col h-full">
               {article.isPremium ? (
-                <div className="h-[500px]">
-                  <PremiumArticleCard
+                <PremiumArticleCard
                     article={{
                       id: article.id,
                       title: article.title,
@@ -60,9 +59,9 @@ export default function HomeArticlesWrapper({ articles, title, description, maxI
                     }}
                     hasPurchased={hasPurchased(article.id)}
                   />
-                </div>
               ) : (
-                <ArticleCard article={{
+                <div className="h-full">
+                  <ArticleCard article={{
                   id: article.id,
                   title: article.title,
                   excerpt: article.excerpt,
@@ -71,6 +70,7 @@ export default function HomeArticlesWrapper({ articles, title, description, maxI
                   createdAt: article.createdAt.toISOString(),
                   user: article.user,
                 }} />
+                </div>
               )}
             </div>
           ))}

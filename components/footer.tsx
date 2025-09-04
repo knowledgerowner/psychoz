@@ -8,9 +8,9 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="border-t border-blue-200 bg-sky-400">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
         <div className="col-span-1 md:col-span-2">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center md:justify-start gap-2">
             <Image src="/Logo.png" alt="Psychoz" width={64} height={64} className="rounded-lg bg-transparent overflow-hidden"/>
             <span className="font-semibold tracking-tight text-white">Psychoz</span>
           </div>

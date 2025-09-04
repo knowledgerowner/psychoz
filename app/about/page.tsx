@@ -81,14 +81,14 @@ export default function AboutPage() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
           <Card className="border-2 border-blue-500/20">
             <CardContent className="p-6 text-center">
               <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">📚</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Éducation</h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground ">
                 Fournir des ressources éducatives de qualité, des tutoriels pratiques et des guides 
                 détaillés pour tous les niveaux de compétence.
               </p>
@@ -108,7 +108,7 @@ export default function AboutPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-purple-500/20">
+          <Card className="border-2 border-purple-500/20 col-span-2 md:col-span-1">
             <CardContent className="p-6 text-center">
               <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🚀</span>
@@ -575,7 +575,7 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/articles">
-                <Button size="lg" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto bg-sky-400 hover:bg-sky-700">
                   Explorer nos articles
                 </Button>
               </Link>
@@ -590,7 +590,7 @@ export default function AboutPage() {
       </section>
 
       {/* Section SEO */}
-      <section className="prose prose-lg dark:prose-invert max-w-none">
+      <section className="prose prose-lg dark:prose-invert max-w-none text-center md:text-left">
         <h2 className="text-2xl font-bold mb-6">Psychoz - Votre partenaire pour la psychologie moderne</h2>
         <p className="mb-4">
           Psychoz est une plateforme éducative française dédiée à la psychologie moderne et aux opérations psychologiques. 

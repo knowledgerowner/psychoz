@@ -34,7 +34,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-blue-200 bg-sky-400/95 backdrop-blur supports-[backdrop-filter]:bg-sky-400/60">
+    <nav className="fixed top-0 left-0 right-0 z-50  bg-sky-400/95 backdrop-blur supports-[backdrop-filter]:bg-sky-400/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -228,7 +228,14 @@ export default function Navigation() {
                   >
                     Contact
                   </Link>
-                  
+                  <Link 
+                    href="/profile" 
+                    className="block text-sm font-medium transition-colors hover:text-primary"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Mon Profil
+                  </Link>
+
                   <div className="pt-4 border-t">
                     {!isLoading && (
                       <>

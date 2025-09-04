@@ -138,7 +138,7 @@ export default async function Home() {
           <HeroCTA />
 
           {/* Statistiques animées */}
-          <div className="w-full mt-12">
+          <div className="w-full mt-12 hidden md:block">
             <AnimatedStats 
               stats={[
                 {
@@ -149,13 +149,13 @@ export default async function Home() {
                 },
                 {
                   icon: <Users className="h-5 w-5 text-sky-100" />,
-                  value: 1200,
+                  value: 200,
                   label: "Lecteurs",
                   suffix: "+"
                 },
                 {
                   icon: <Brain className="h-5 w-5 text-sky-100" />,
-                  value: 25,
+                  value: 10,
                   label: "Catégories"
                 },
                 {

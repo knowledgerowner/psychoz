@@ -176,13 +176,13 @@ export default function ProfilePage() {
         </div>
 
         {/* Sidebar droite */}
-        <div className="space-y-6">
+        <div className="flex flex-col gap-6">
           {/* Actions rapides */}
           <Card>
             <CardHeader>
               <CardTitle>Actions rapides</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="flex flex-col gap-3">
               <Link href="/profile/settings" className="w-full">
                 <Button variant="outline" className="w-full justify-start">
                   <User className="mr-2 h-4 w-4" />
@@ -236,7 +236,7 @@ export default function ProfilePage() {
             <CardHeader>
               <CardTitle className="text-lg">Besoin d&apos;aide ?</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="flex flex-col gap-3">
               <Link href="/contact" className="w-full">
                 <Button variant="outline" className="w-full justify-start">
                   <Mail className="mr-2 h-4 w-4" />

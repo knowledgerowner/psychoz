@@ -27,7 +27,7 @@ const badges = [
 
 export default function TrustBadges() {
   return (
-    <div className="flex flex-wrap justify-center gap-6 mt-8">
+    <div className="flex flex-wrap justify-center gap-6 mt-8 grid grid-cols-2 md:grid-cols-4">
       {badges.map((badge, index) => (
         <div 
           key={index}

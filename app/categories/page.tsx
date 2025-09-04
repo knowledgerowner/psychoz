@@ -81,7 +81,7 @@ export default async function CategoriesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="md:max-w-80/100 mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Hero Section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
@@ -89,11 +89,11 @@ export default async function CategoriesPage() {
             Explorer nos catégories
           </div>
           
-          <h1 className="text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent py-4">
-            Catégories Psychoz
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent py-4">
+            Catégories Psychologie
           </h1>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 px-4">
             Naviguez dans notre collection d&apos;articles psychologiques organisés par domaines d&apos;expertise. 
             Trouvez rapidement les contenus qui correspondent à vos besoins et à votre niveau.
           </p>
@@ -140,25 +140,25 @@ export default async function CategoriesPage() {
           </div>
 
           {categories.length > 0 ? (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid gap-4 sm:gap-6 grid-cols-1 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-fr">
               {categories.map((category) => (
-                <Link key={category.id} href={`/categories/${category.slug}`}>
+                <Link key={category.id} href={`/categories/${category.slug}`} className="block h-full">
                   <Card className="h-full transition-all duration-200 hover:shadow-lg hover:-translate-y-1 group">
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4">
-                        <div className="group-hover:scale-110 transition-transform duration-200">
+                    <CardContent className="p-4 sm:p-6 h-full flex flex-col">
+                      <div className="flex flex-col sm:flex-row items-start gap-4 flex-1">
+                        <div className="group-hover:scale-110 transition-transform duration-200 self-center sm:self-start">
                           {getCategoryIcon(category.name)}
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between mb-2">
-                            <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
+                        <div className="flex-1 min-w-0 text-center sm:text-left">
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+                            <h3 className="font-semibold text-base sm:text-lg group-hover:text-primary transition-colors line-clamp-2">
                               {category.name}
                             </h3>
-                            <Badge variant="outline" className="ml-2 flex-shrink-0">
+                            <Badge variant="outline" className="self-center sm:self-auto flex-shrink-0">
                               Articles
                             </Badge>
                           </div>
-                          <p className="text-sm text-muted-foreground line-clamp-2">
+                          <p className="text-xs sm:text-sm text-muted-foreground line-clamp-3">
                             {category.description || "Découvrez nos articles spécialisés dans cette catégorie"}
                           </p>
                         </div>
@@ -180,7 +180,7 @@ export default async function CategoriesPage() {
         </section>
 
         {/* SEO Section */}
-        <section className="mt-20 mb-8">
+        <section className="mt-20 mb-8 text-center">
           <Card className="border-none bg-gradient-to-r from-muted/50 to-muted/30">
             <CardContent className="p-8 lg:p-12">
               <h2 className="text-3xl font-bold mb-6 text-center">

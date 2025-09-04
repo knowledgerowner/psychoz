@@ -27,12 +27,11 @@ export default function CategoriesArticlesWrapper({ articles }: CategoriesArticl
   const { hasPurchased } = usePurchasedArticles();
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 grid-cols-2 lg:grid-cols-3 auto-rows-fr">
       {articles.map((article) => (
-        <div key={article.id} className="hover:scale-105 transition-transform duration-200">
+        <div key={article.id} className="flex flex-col h-full hover:scale-105 transition-transform duration-200">
           {article.isPremium ? (
-            <div className="h-[500px]">
-              <PremiumArticleCard 
+            <PremiumArticleCard 
                 article={{
                   id: article.id,
                   title: article.title,
@@ -44,9 +43,9 @@ export default function CategoriesArticlesWrapper({ articles }: CategoriesArticl
                 }}
                 hasPurchased={hasPurchased(article.id)}
               />
-            </div>
           ) : (
-            <ArticleCard 
+            <div className="h-full">
+              <ArticleCard 
               article={{
                 id: article.id,
                 title: article.title,
@@ -57,6 +56,7 @@ export default function CategoriesArticlesWrapper({ articles }: CategoriesArticl
                 user: article.user
               }}
             />
+            </div>
           )}
         </div>
       ))}

@@ -22,8 +22,8 @@ export default function PartnersPage() {
       <section className="mb-16">
         <h2 className="text-3xl font-bold text-center mb-12 text-sky-700">Nos Services Partenaires</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <Card className="border-2 border-sky-200 hover:shadow-lg transition-all duration-300 hover:scale-105 hover:border-sky-300">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
+          <Card className="border-2 border-sky-200 hover:shadow-lg transition-all duration-300 hover:scale-105 hover:border-sky-300 col-span-2 lg:col-span-1">
             <CardContent className="p-6">
               <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">✍️</span>
@@ -53,7 +53,7 @@ export default function PartnersPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-sky-200 hover:shadow-lg transition-all duration-300 hover:scale-105 hover:border-sky-300">
+          <Card className="border-2 border-sky-200 hover:shadow-lg transition-all duration-300 hover:scale-105 hover:border-sky-300 col-span-2 lg:col-span-1">
             <CardContent className="p-6">
               <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🔗</span>
@@ -87,7 +87,7 @@ export default function PartnersPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-sky-200 hover:shadow-lg transition-all duration-300 hover:scale-105 hover:border-sky-300">
+          <Card className="border-2 border-sky-200 hover:shadow-lg transition-all duration-300 hover:scale-105 hover:border-sky-300 col-span-2 lg:col-span-1">
             <CardContent className="p-6">
               <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🎯</span>
@@ -113,7 +113,7 @@ export default function PartnersPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-sky-200 hover:shadow-lg transition-all duration-300 hover:scale-105 hover:border-sky-300 col-span-3">
+          <Card className="border-2 border-sky-200 hover:shadow-lg transition-all duration-300 hover:scale-105 hover:border-sky-300 col-span-2 lg:col-span-3">
             <CardContent className="p-6">
               <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🌐</span>
@@ -122,7 +122,7 @@ export default function PartnersPage() {
               <p className="text-muted-foreground mb-4 text-center">
                 Accès à notre réseau de blogs partenaires pour une visibilité maximale.
               </p>
-              <div className="space-y-2 text-sm flex justify-center gap-4 text-left">
+              <div className="space-y-2 text-sm grid grid-cols-2 lg:grid-cols-4 gap-4 text-center place-items-center">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-sky-500 rounded-full"></span>
                   <span>Réseau de 50+ blogs partenaires</span>
@@ -322,7 +322,7 @@ export default function PartnersPage() {
       <section className="mb-16">
         <h2 className="text-3xl font-bold text-center mb-12 text-sky-700">Notre Processus de Collaboration</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
             <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl font-bold text-sky-600">1</span>
@@ -391,7 +391,7 @@ export default function PartnersPage() {
       </section>
 
       {/* Section SEO */}
-      <section className="prose prose-lg dark:prose-invert max-w-none">
+      <section className="prose prose-lg dark:prose-invert max-w-none text-center">
         <h2 className="text-2xl font-bold mb-6 text-sky-700">Partenariats Psychoz - Votre Partenaire Psychologique de Confiance</h2>
         <p className="mb-4">
           Psychoz propose des services de partenariat premium pour les psychologues et professionnels 

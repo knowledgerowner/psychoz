@@ -312,7 +312,7 @@ export default function ContactPage() {
       </div>
 
       {/* Section SEO */}
-      <div className="mt-16 prose prose-sm dark:prose-invert max-w-none">
+      <div className="mt-16 prose prose-sm dark:prose-invert max-w-none text-center md:text-left">
         <h2 className="text-2xl font-bold mb-6">Psychoz - Votre partenaire psychologique de confiance</h2>
         <p className="mb-4">
           Psychoz est une plateforme de référence dans le domaine de la psychologie moderne et des opérations psychologiques. 

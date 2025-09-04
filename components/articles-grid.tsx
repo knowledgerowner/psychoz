@@ -36,12 +36,11 @@ export default function ArticlesGrid({ articles }: ArticlesGridProps) {
   }
 
   return (
-    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-2 lg:grid-cols-3 auto-rows-fr">
       {articles.map((article) => (
-        <div key={article.id}>
+        <div key={article.id} className="flex flex-col h-full">
           {article.isPremium ? (
-            <div className="h-[500px]">
-              <PremiumArticleCard
+            <PremiumArticleCard
                 article={{
                   id: article.id,
                   title: article.title,
@@ -53,9 +52,9 @@ export default function ArticlesGrid({ articles }: ArticlesGridProps) {
                 }}
                 hasPurchased={hasPurchased(article.id)}
               />
-            </div>
           ) : (
-            <ArticleCard article={{
+            <div className="h-full">
+              <ArticleCard article={{
               id: article.id,
               title: article.title,
               excerpt: article.excerpt,
@@ -64,6 +63,7 @@ export default function ArticlesGrid({ articles }: ArticlesGridProps) {
               createdAt: article.createdAt,
               user: article.user,
             }} />
+            </div>
           )}
         </div>
       ))}

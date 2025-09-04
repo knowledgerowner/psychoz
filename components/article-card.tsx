@@ -23,9 +23,9 @@ interface ArticleCardProps {
 export default function ArticleCard({ article }: ArticleCardProps) {
   return (
     <Link href={`/articles/${article.slug}`} className="block group">
-      <Card className="h-[520px] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-sky-300/30 hover:scale-[1.02] border border-sky-200/50 dark:border-sky-700/50 bg-white dark:bg-slate-800 relative">
+      <Card className="h-full min-h-[400px] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-sky-300/30 hover:scale-[1.02] border border-sky-200/50 dark:border-sky-700/50 bg-white dark:bg-slate-800 relative">
         {/* Container image avec bordure arrondie et ombre */}
-        <div className="relative h-72 overflow-hidden bg-gradient-to-br from-sky-50 to-sky-100 dark:from-sky-900 dark:to-sky-800 mx-4 mt-4 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-500">
+        <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-sky-50 to-sky-100 dark:from-sky-900 dark:to-sky-800 mx-4 mt-4 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-500">
           {article.imageUrl ? (
             <Image 
               src={article.imageUrl} 
@@ -49,7 +49,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
           
           {/* Badge Article Gratuit - repositionné */}
-          <div className="absolute top-3 left-3">
+          <div className="absolute top-3 left-3 hidden md:block">
             <Badge className="bg-gradient-to-r from-sky-500 to-sky-700 text-white border-2 border-white/30 shadow-lg backdrop-blur-sm font-bold px-3 py-1.5 rounded-full text-xs">
               <BookOpen className="w-3 h-3 mr-1.5" />
               GRATUIT
@@ -68,15 +68,15 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         </div>
 
         {/* Contenu de la carte avec espacement amélioré */}
-        <CardContent className="p-6 flex flex-col h-[232px] bg-gradient-to-b from-sky-50/30 to-white dark:from-slate-800 dark:to-slate-700">
+        <CardContent className="p-4 md:p-6 flex flex-col flex-1 bg-gradient-to-b from-sky-50/30 to-white dark:from-slate-800 dark:to-slate-700">
           {/* Métadonnées avec design plus moderne */}
-          <div className="flex items-center gap-2 mb-4 text-xs">
-            <div className="flex items-center gap-1.5 bg-sky-100 dark:bg-sky-900/50 px-3 py-1.5 rounded-full border border-sky-200 dark:border-sky-700">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 mb-4 text-xs">
+            <div className="flex items-center gap-1.5 bg-sky-100 dark:bg-sky-900/50 px-2 sm:px-3 py-1.5 rounded-full border border-sky-200 dark:border-sky-700 w-full justify-center">
               <User className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
-              <span className="font-semibold text-sky-700 dark:text-sky-300">{article.user.username}</span>
+              <span className="font-semibold text-sky-700 dark:text-sky-300 truncate max-w-[100px]">{article.user.username}</span>
             </div>
-            <div className="flex items-center gap-1.5 bg-sky-100 dark:bg-sky-900/50 px-3 py-1.5 rounded-full border border-sky-200 dark:border-sky-700">
-              <Calendar className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
+            <div className="flex items-center gap-1.5 bg-sky-100 dark:bg-sky-900/50 px-2 sm:px-3 py-1.5 rounded-full border border-sky-200 dark:border-sky-700 w-full justify-center">
+              <Calendar className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400 hidden md:block" />
               <span className="font-medium text-sky-700 dark:text-sky-300">{new Date(article.createdAt).toLocaleDateString('fr-FR', {
                 year: 'numeric',
                 month: 'short',
@@ -86,14 +86,9 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           </div>
           
           {/* Titre avec meilleure hiérarchie */}
-          <h3 className="text-xl font-bold leading-tight mb-3 text-slate-800 dark:text-slate-100 group-hover:text-sky-700 dark:group-hover:text-sky-400 transition-colors duration-300 line-clamp-2">
+          <h3 className="text-md sm:text-xl font-bold leading-tight mb-3 text-slate-800 dark:text-slate-100 group-hover:text-sky-700 dark:group-hover:text-sky-400 transition-colors duration-300 flex-1 line-clamp-3 sm:line-clamp-2">
             {article.title}
           </h3>
-          
-          {/* Extrait avec meilleur contraste */}
-          <p className="text-slate-600 dark:text-slate-300 mb-4 line-clamp-1 leading-relaxed text-sm flex-1">
-            {article.excerpt || "Découvrez ce contenu technique gratuit et enrichissez vos connaissances avec des exemples pratiques et des explications détaillées."}
-          </p>
           
           {/* Footer redesigné */}
           <div className="flex items-center justify-between pt-4 border-t border-sky-200/50 dark:border-sky-700/50 mt-auto">
@@ -102,7 +97,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
                 <Clock className="w-3 h-3 text-sky-500" />
                 <span className="font-medium">5 min</span>
               </div>
-              <div className="flex items-center gap-1.5">
+              <div className="hidden md:flex items-center gap-1.5">
                 <Eye className="w-3 h-3 text-sky-500" />
                 <span className="font-medium">Accès libre</span>
               </div>

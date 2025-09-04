@@ -76,7 +76,7 @@ export default async function ArticlesPage({
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4">
-          Articles Psychoz - Votre bibliothèque de connaissances en psychologie
+          Articles Psychologie - Votre bibliothèque de connaissances en psychologie
         </h1>
         <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-6">
           Explorez notre collection complète d&apos;articles sur la psychologie, tutoriels et guides pratiques 

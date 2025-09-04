@@ -179,7 +179,7 @@ export default function LoginPage() {
 
               <Button
                 type="submit"
-                className="w-full"
+                className="w-full bg-sky-400 hover:bg-sky-700"
                 disabled={isLoading}
               >
                 {isLoading ? "Connexion..." : "Se connecter"}
