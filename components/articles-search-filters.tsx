@@ -85,7 +85,7 @@ export default function ArticlesSearchFilters({
       </CardHeader>
       <CardContent className="space-y-4">
         {/* Search Bar */}
-        <form onSubmit={handleSearch} className="flex gap-2">
+        <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-2">
           <Input
             type="text"
             placeholder="Rechercher un article..."
@@ -93,53 +93,61 @@ export default function ArticlesSearchFilters({
             onChange={(e) => setSearchTerm(e.target.value)}
             className="flex-1"
           />
-          <Button type="submit">Rechercher</Button>
+          <Button type="submit" className="w-full sm:w-auto bg-sky-400 hover:bg-sky-500 text-white">Rechercher</Button>
         </form>
 
         {/* Filters */}
-        <div className="flex flex-wrap gap-4 items-center">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <Filter className="h-4 w-4" />
             <span className="text-sm font-medium">Filtres :</span>
           </div>
           
           {/* Category Filter */}
-          <div className="flex gap-2">
-            <Button
-              variant={selectedCategory === "" ? "default" : "outline"}
-              size="sm"
-              onClick={() => handleCategoryChange("")}
-            >
-              Toutes
-            </Button>
-            {categories.map((category) => (
+          <div className="">
+            <span className="text-sm text-muted-foreground">Catégories :</span>
+            <div className="flex flex-wrap gap-2">
               <Button
-                key={category.id}
-                variant={selectedCategory === category.id ? "default" : "outline"}
+                variant={selectedCategory === "" ? "default" : "outline"}
                 size="sm"
-                onClick={() => handleCategoryChange(category.id)}
+                onClick={() => handleCategoryChange("")}
+                className="bg-sky-400 hover:bg-sky-500 text-white w-full"
               >
-                {category.name}
+                Toutes
               </Button>
-            ))}
+              {categories.map((category) => (
+                <Button
+                  key={category.id}
+                  variant={selectedCategory === category.id ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => handleCategoryChange(category.id)}
+                  className="text-xs sm:text-sm w-fit"
+                >
+                  {category.name}
+                </Button>
+              ))}
+            </div>
           </div>
 
           {/* Sort Options */}
-          <div className="flex gap-2">
-            <Button
-              variant={sortBy === "date" ? "default" : "outline"}
-              size="sm"
-              onClick={() => handleSortChange("date")}
-            >
-              Plus récent
-            </Button>
-            <Button
-              variant={sortBy === "title" ? "default" : "outline"}
-              size="sm"
-              onClick={() => handleSortChange("title")}
-            >
-              Alphabétique
-            </Button>
+          <div className="space-y-2">
+            <span className="text-sm text-muted-foreground">Tri :</span>
+            <div className="flex flex-wrap gap-2">
+              <Button
+                variant={sortBy === "date" ? "default" : "outline"}
+                size="sm"
+                onClick={() => handleSortChange("date")}
+              >
+                Plus récent
+              </Button>
+              <Button
+                variant={sortBy === "title" ? "default" : "outline"}
+                size="sm"
+                onClick={() => handleSortChange("title")}
+              >
+                Alphabétique
+              </Button>
+            </div>
           </div>
         </div>
       </CardContent>

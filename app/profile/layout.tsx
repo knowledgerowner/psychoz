@@ -100,27 +100,27 @@ export default function ProfileLayout({
 
       {/* Sidebar */}
       <div className={cn(
-        "fixed inset-y-0 left-0 z-50 w-96 bg-card border-r transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:inset-0",
+        "fixed inset-y-0 left-0 z-50 w-80 sm:w-96 bg-card border-r transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:inset-0",
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         <div className="flex h-full flex-col px-2">
 
 
           {/* User Info */}
-          <div className="border-b p-6">
+          <div className="border-b p-4 sm:p-6">
             <div className="flex items-center space-x-3 w-fit mx-auto">
-              <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg">
+              <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm sm:text-lg">
                 {user.username.charAt(0).toUpperCase()}
               </div>
-              <div>
-                <p className="font-medium">{user.username}</p>
-                <p className="text-sm text-muted-foreground">{user.email}</p>
+              <div className="min-w-0 flex-1">
+                <p className="font-medium text-sm sm:text-base truncate">{user.username}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground truncate">{user.email}</p>
               </div>
             </div>
           </div>
 
           {/* Navigation Sidebar */}
-          <ScrollArea className="flex-1 px-3 py-4">
+          <ScrollArea className="flex-1 px-2 sm:px-3 py-4">
             <nav className="space-y-1">
               {sidebarItems.map((item) => {
                 const isActive = pathname === item.href;
@@ -129,18 +129,18 @@ export default function ProfileLayout({
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "flex items-center space-x-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
+                      "flex items-center space-x-2 sm:space-x-3 rounded-lg px-2 sm:px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
                       isActive 
                         ? "bg-accent text-accent-foreground" 
                         : "text-muted-foreground"
                     )}
                     onClick={() => setSidebarOpen(false)}
                   >
-                    <item.icon className="h-4 w-4" />
-                    <div className="flex-1">
-                      <span>{item.title}</span>
+                    <item.icon className="h-4 w-4 flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <span className="block truncate">{item.title}</span>
                       {item.label && (
-                        <p className="text-xs text-muted-foreground mt-0.5">
+                        <p className="text-xs text-muted-foreground mt-0.5 truncate">
                           {item.label}
                         </p>
                       )}
@@ -152,9 +152,9 @@ export default function ProfileLayout({
           </ScrollArea>
 
           {/* Footer Sidebar */}
-          <div className="border-t p-4">
+          <div className="border-t p-3 sm:p-4">
             <Link href="/">
-              <Button variant="ghost" className="w-full justify-start">
+              <Button variant="ghost" className="w-full justify-start text-sm">
                 <ChevronLeft className="mr-2 h-4 w-4" />
                 Retour au site
               </Button>
@@ -181,7 +181,7 @@ export default function ProfileLayout({
         </div>
 
         {/* Content */}
-        <div className="flex-1 p-6">
+        <div className="flex-1 p-4 sm:p-6">
           {children}
         </div>
       </div>

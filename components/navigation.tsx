@@ -267,7 +267,7 @@ export default function Navigation() {
                             </div>
                           </div>
                         ) : (
-                          <div className="space-y-2">
+                          <div className="flex flex-col gap-2">
                             <Link href="/login" onClick={() => setIsMenuOpen(false)}>
                               <Button variant="ghost" className="w-full justify-start">
                                 <User className="mr-2 h-4 w-4" />
@@ -275,7 +275,7 @@ export default function Navigation() {
                               </Button>
                             </Link>
                             <Link href="/register" onClick={() => setIsMenuOpen(false)}>
-                              <Button className="w-full justify-start">
+                              <Button className="w-full justify-start bg-sky-400 hover:bg-sky-500 text-white">
                                 Inscription
                               </Button>
                             </Link>

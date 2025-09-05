@@ -213,7 +213,7 @@ export default async function Home() {
       <FAQSection faq={faq} />
 
       {/* SEO Content */}
-      <section className="mt-16 mb-8">
+      <section className="mt-16 mb-8 text-center">
         <div className="prose max-w-none">
           <h2 className="text-2xl font-semibold mb-6 text-gray-900">Psychoz - Votre source d&apos;informations sur la psychologie</h2>
           <p className="text-gray-600 mb-4">

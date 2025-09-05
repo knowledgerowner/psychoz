@@ -43,7 +43,7 @@ export default function HomeArticlesWrapper({ articles, title, description, maxI
       </div>
       
       {displayArticles.length > 0 ? (
-        <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+        <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 grid-cols-2 lg:grid-cols-3 auto-rows-fr">
           {displayArticles.map((article) => (
             <div key={article.id} className="flex flex-col h-full">
               {article.isPremium ? (
